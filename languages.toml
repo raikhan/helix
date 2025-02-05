@@ -1,0 +1,23 @@
+[language-server.ruff-lsp]
+command = "ruff-lsp"
+
+[[language]]
+name = "python"
+auto-format = true
+language-servers = [ "pyright", "ruff-lsp" ]
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "basic"
+
+
+[language-server]
+# Rust tool for fast formatting of different web languages (js, ts, JSON etc)
+biome = { command = "biome", args = ["lsp-proxy"] }
+
+[[language]]
+name = "json"
+auto-format = true
+language-servers = [ { name = "vscode-json-language-server", except-features = [ "format" ] }, "biome"]
+
+
+

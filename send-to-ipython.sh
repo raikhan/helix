@@ -25,14 +25,15 @@ text=$(cat)
 # Copy to clipboard based on OS
 if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "$text" | pbcopy
-elif command -v xclip >/dev/null 2>&1; then
-    echo "$text" | xclip -selection clipboard
-elif command -v xsel >/dev/null 2>&1; then
-    echo "$text" | xsel --clipboard --input
-else
-    echo "No clipboard command found. Please install xclip or xsel."
-    exit 1
-fi
 
-# Send the %paste command, using the full pane id
-tmux send-keys -t "$IPYTHON_PANE" "%paste" Enter
+else
+    # On headless Linux, we have no clipboard
+
+    # Create temp file
+    tmpfile="/tmp/ipython_input.py"
+    echo "$text" > "$tmpfile"
+    
+    # Send commands to read from the temp file
+    tmux send-keys -t "$IPYTHON_PANE" "!batcat --paging=never $tmpfile" Enter 
+    tmux send-keys -t "$IPYTHON_PANE" "%run -i $tmpfile" Enter    
+fi

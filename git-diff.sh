@@ -35,7 +35,8 @@ check_git_repo
 show_git_diff
 
 # Watch for changes and show git diff (excluding hidden files/dirs)
-fswatch -o -e "/\.[^/]*$" -e "/\." "$WATCH_DIR" | while read change; do
+# NOTE limited the events that trigger to avoid too many triggers on Linux
+fswatch -1 -o -E --event Created --event Updated --event Removed -e "/\.[^/]*$" "$WATCH_DIR" | while read change; do
     show_git_diff
 done
 

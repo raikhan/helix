@@ -20,4 +20,8 @@ auto-format = true
 language-servers = [ { name = "vscode-json-language-server", except-features = [ "format" ] }, "biome"]
 
 
-
+[[language]]
+name = "markdown"
+auto-format = true
+language-servers = [ { name = "marksman" } ]
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md"]}

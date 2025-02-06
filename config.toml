@@ -28,6 +28,9 @@ ret = "goto_word"
 
 "C-p" = ":pipe-to ~/.config/helix/send-to-ipython.sh"
 
+# Launch lazygit inside helix!
+C-x = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw", ":reload-all"]
+
 
 [keys.select]
 "{" = "goto_prev_paragraph"

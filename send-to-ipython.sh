@@ -2,8 +2,8 @@
 
 # Function to find iPython pane
 find_ipython_pane() {
-    # List all panes and their running processes
-    tmux list-panes -a -F '#{pane_id}' | while read -r pane_id; do
+    # List panes in current window
+    tmux list-panes -F '#{pane_id}' | while read -r pane_id; do
         # Check if command contains 'ipython'
         if tmux capture-pane -p -t "$pane_id" | grep -q "In \[[0-9]*\]:"; then
             echo "$pane_id"  # Return the full pane id including %
@@ -24,7 +24,10 @@ text=$(cat)
 
 # Copy to clipboard based on OS
 if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Use macos pbcopy to put text to the clipboard
     echo "$text" | pbcopy
+    # Send the %paste command to copy text from clipboard, using the full pane id
+    tmux send-keys -t "$IPYTHON_PANE" "%paste" Enter
 
 else
     # On headless Linux, we have no clipboard

@@ -1,20 +1,26 @@
 #!/bin/bash
 
-# @option --path  Work directory path
-# @option --name  Name for the new tab
+# @arg inputs* Positional params: path to workdir to open and (optional) name of new window
 # @flag -K --kill Kill the window from which this script was run
 
 eval "$(argc --argc-eval "$0" "$@")"
 
-if [ -z "$argc_path" ]; then
+if [[ -n "${argc_inputs[0]}" ]]; then
+  argc_path=${argc_inputs[0]}
+else
   argc_path="$(pwd)"
 fi
-if [ -z "$argc_name" ]; then
+
+# Set name from second input or default
+if [[ -n "${argc_inputs[1]}" ]]; then
+  argc_name=${argc_inputs[1]}
+else
   argc_name="dev"
 fi
     
 echo path: "$argc_path"
 echo name: "$argc_name"
+echo kill: "$argc_kill"
  
 # Create new window
 tmux new-window -n "$argc_name"

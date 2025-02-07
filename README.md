@@ -7,3 +7,11 @@ This setup combines the [helix](https://helix-editor.com/) editor, running in a 
 - [dev-template.sh](./dev-template.sh): shell script starts a new window in the selected folder, splits it in 4 panes and runs helix, [aider](https://aider.chat/) and git-diff.sh in 3 of them, while the last one is left as a terminal. I use [oh-my-zsh](https://ohmyz.sh/) to manage my terminal tools and have 
 [autoswitch_virtualenv](https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv) added which loads the right Python virtualenv when terminal goes to the project dir. This helps make sure all the tools are running in the correct environment.
 
+## Required Homebrew packages
+
+- helix (editor)
+- lazygit (git CLI tool)
+- bat (fancy cat tool)
+- git-delta (fancy git diff tool)
+- marksman (LSP for markdown)
+- argc (tools for cleaner bash script arguments)

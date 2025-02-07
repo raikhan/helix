@@ -2,6 +2,7 @@
 
 # @option --path  Work directory path
 # @option --name  Name for the new tab
+# @flag -K --kill Kill the window from which this script was run
 
 eval "$(argc --argc-eval "$0" "$@")"
 
@@ -38,3 +39,8 @@ tmux send-keys -t 4 "cd $argc_path" Enter
 tmux send-keys -t 4 "$HOME/.config/helix/git-diff.sh" Enter
 
 tmux select-pane -t 1
+
+if [ -n "$argc_kill" ]; then
+  # Kill the window from which the script was run
+  tmux kill-window -t !
+fi  

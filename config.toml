@@ -31,6 +31,9 @@ ret = "goto_word"
 # Launch lazygit inside helix!
 C-x = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw", ":reload-all"]
 
+[keys.normal.space]
+# Open file picker relative to current file
+"-" = "file_picker_in_current_buffer_directory"
 
 [keys.select]
 "{" = "goto_prev_paragraph"

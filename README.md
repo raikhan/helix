@@ -15,3 +15,6 @@ This setup combines the [helix](https://helix-editor.com/) editor, running in a 
 - git-delta (fancy git diff tool)
 - marksman (LSP for markdown)
 - argc (tools for cleaner bash script arguments)
+- tmuxinator
+- yazi (with a few plugins and different settings)
+- zoxide (for directory movement)

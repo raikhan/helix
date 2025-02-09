@@ -1,4 +1,3 @@
-
 #!/bin/zsh
 
 # Check if the directory is a git repository

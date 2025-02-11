@@ -1,10 +1,7 @@
-[language-server.ruff-lsp]
-command = "ruff-lsp"
-
 [[language]]
 name = "python"
 auto-format = true
-language-servers = [ "pyright", "ruff-lsp" ]
+language-servers = [ "pyright", "ruff" ]
 
 [language-server.pyright.config.python.analysis]
 typeCheckingMode = "basic"

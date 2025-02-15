@@ -1,4 +1,4 @@
-theme = "material_darker"
+theme = "material_deep_ocean"
 
 [editor]
 line-number = "relative"
@@ -21,7 +21,8 @@ esc = ["collapse_selection", "keep_primary_selection"]
 X = "select_line_above"
 D = "kill_to_line_end"
 ret = "goto_word"
-"C-l" = ":reload-all"
+"C-r" = ":reload-all"
+"C-ret" = "insert_newline"
 "C-j" = "insert_newline"
 "{" = "goto_prev_paragraph"
 "}" = "goto_next_paragraph"
@@ -30,6 +31,7 @@ ret = "goto_word"
 
 # Launch lazygit inside helix!
 C-x = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw", ":reload-all"]
+C-y = [":sh tmux split-window 'YAZI_CONFIG_HOME=~/.config/yazi/sidebar yazi'"]
 
 [keys.normal.space]
 # Open file picker relative to current file

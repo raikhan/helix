@@ -6,7 +6,6 @@ if [ -z "$TMUX" ]; then
     exit 1
 fi
 
-
 # Get current window index
 current_window=$(tmux display-message -p '#{window_index}')
 
@@ -32,6 +31,6 @@ done
 # Send the :o command to helix with the file path
 tmux send-keys -t "$current_window.$helix_pane" "$command" Enter
 
-# Switch the focus on helix pane
-tmux select-pane -t "$helix_pane"
+# Close yazi which will close the split-window open for it
+tmux send-keys "q"
 
